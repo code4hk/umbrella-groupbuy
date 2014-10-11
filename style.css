@@ -15,3 +15,14 @@
 .deal-image{
     max-height:30rem;
 }
+
+.price-tag{
+    /*margin-right:5rem;*/
+    color:#18bc9c;
+}
+.price-tag .badge{
+    font-size:3rem;
+    background-color:#18bc9c;
+    vertical-align: middle;
+
+}
