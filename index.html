@@ -39,6 +39,41 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
+<script>
+  // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      console.log('test API');
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into Facebook.';
+    }
+  }
+
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+</script>
+
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -95,7 +130,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li>
             <a href="#">
-              <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
+              <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false" onlogin="checkLoginState();"></div>
               </a>
             </li>
             <li><a href="http://builtwithbootstrap.com/" target="_blank">Code4HK</a></li>
@@ -126,12 +161,6 @@
               <h3><i class="fa fa-map-marker"></i>金鐘 13-Oct-2014</h3>
             </div>
 
-              <div
-              class="fb-like"
-              data-share="true"
-              data-width="450"
-              data-show-faces="true">
-            </div>
             <div class="bs-component section-deal">
               <div class="jumbotron">
               <div class="row">
@@ -147,6 +176,12 @@
                     <p>祥香園係西環三寶之一，整番杯熱奶茶繼續撐！</p>
                     <p>
                     <a class="btn btn-primary btn-lg"><i class="fa fa-umbrella"></i>撐</a>
+             <div
+              class="fb-like"
+              data-share="true"
+              data-width="450"
+              data-show-faces="true">
+            </div>
                     </p>
                 </div>
               </div>
