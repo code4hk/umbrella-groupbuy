@@ -26,3 +26,19 @@
     vertical-align: middle;
 
 }
+
+.section-deal{
+    margin-bottom: 10rem;
+}
+
+.section-idea{
+    /*margin-bottom: 5rem;*/
+}
+
+.fa-umbrella{
+    color:yellow;
+}
+
+.navbar{
+    background-color: #149c82;
+}
