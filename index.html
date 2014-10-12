@@ -60,7 +60,11 @@
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
-      console.log('test API');
+      FB.api('/me', function(response) {
+      // console.log('Successful login for: ' + response.name);
+            $(".login-name").innerHTML(response.name);
+      });
+      $(".fb-login-button").addClass("hidden");
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
@@ -141,6 +145,7 @@
             <li>
             <a href="#">
               <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false" onlogin="checkLoginState();"></div>
+              <div class="login-name"></div>
               </a>
             </li>
             <li><a href="http://builtwithbootstrap.com/" target="_blank">Code4HK</a></li>
