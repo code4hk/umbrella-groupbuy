@@ -1,4 +1,8 @@
 var config = require('./config.json');
+var express = require('express');
+
+var app = express();
+app.use(express.static('./'));
 var Spreadsheet = require('edit-google-spreadsheet');
 Spreadsheet.load({
     debug: true,
@@ -29,3 +33,13 @@ Spreadsheet.load({
 
     //use speadsheet!
   });
+
+
+app.get('/deal/:dealId/buy/:userId', function(req, res){
+  var text = 'Buy deal '+req.params.dealId +' for'+req.params.userId;
+  console.log(text);
+  res.send(text);
+
+});
+
+app.listen(3000);

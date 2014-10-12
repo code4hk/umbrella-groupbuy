@@ -48,46 +48,6 @@
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
     </script>
-
-<script>
-  // This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
-    if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      FB.api('/me', function(response) {
-      // console.log('Successful login for: ' + response.name);
-            $(".login-name").innerHTML(response.name);
-      });
-      $(".fb-login-button").addClass("hidden");
-    } else if (response.status === 'not_authorized') {
-      // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
-    } else {
-      // The person is not logged into Facebook, so we're not sure if
-      // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
-    }
-  }
-
-  // This function is called when someone finishes with the Login
-  // Button.  See the onlogin handler attached to it in the sample
-  // code below.
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
-
-</script>
-
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -190,7 +150,10 @@
                   </p>
                     <p>祥香園係西環三寶之一，整番杯熱奶茶繼續撐！</p>
                     <p>
-                    <a class="btn btn-primary btn-lg"><i class="fa fa-umbrella"></i>撐</a>
+                    <a id="buy" class="btn btn-primary btn-lg"><i class="fa fa-umbrella"></i>撐</a>
+                     <a id="bought" class="btn btn-success btn-lg hidden"><i class="fa fa-check"></i>已撐</a>
+
+                    
              <div
               class="fb-like"
               data-share="true"
@@ -240,6 +203,7 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="./ui.js"></script>
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../assets/js/bootswatch.js"></script>
 
