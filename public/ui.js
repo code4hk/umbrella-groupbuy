@@ -9,7 +9,7 @@ var me;
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
-      FB.api('/me', function(response) {
+      FB.api('/me?scope=email', function(response) {
       // console.log('Successful login for: ' + response.name);
             me = response;
             $(".login-name").text(response.name);
